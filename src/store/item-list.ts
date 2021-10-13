@@ -36,12 +36,7 @@ class ItemListStore {
   }
 
   addItem() {
-    // 이 안에서 어떤일이 일어나던 state는 최종값만을 반영한다.
-    // this.itemList = [...this.itemList, {
-    //   id: this.itemList[this.itemList.length - 1].id + 1,
-    //   name: this.newItem,
-    //   available: true
-    // }];
+    // 이 안에서 어떤일이 일어나던 중간 값은 업데이트 되지 않고 state는 최종값만을 반영한다.
     this.itemList.push({
       id: this.itemList[this.itemList.length - 1].id + 1,
       name: this.newItem,
@@ -57,6 +52,10 @@ class ItemListStore {
 
   deleteItem(itemId: number) {
     this.itemList = this.itemList.filter(item => item.id !== itemId);
+  }
+
+  get getTotalItemCount() {
+    return this.itemList.length;
   }
 }
 
